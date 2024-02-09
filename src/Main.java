@@ -22,6 +22,19 @@ import java.util.Scanner;
 public class Main {
 
     // Constants
+    static final String WELCOME = "Welcome to dice game 12. "
+            + "You must roll 1-3 dice and try to get the sum of 12 ...";
+    static final String CHOICES = "Enter which dice you want to roll [1,2,3]"
+            + " (exit with q):";
+    static final String ALREADY_ROLLED = "Sorry, you have already rolled that "
+            + "dice. Try again";
+    static final String INVALID_ENTRY = "Sorry, that is an invalid entry. "
+            + "Try again. Valid entries are 1, 2, 3, and q";
+    static final String WIN = "You won!!";
+    static final String LOSS = "You lost!!";
+    static final String DRAW = "You neither won nor lost the game.";
+    static final String NEXT_ROUND = "Next round!";
+    static final String GAME_OVER = "Game Over!";
     static final int MIN_DICE_VALUE = 1;
     static final int MAX_DICE_VALUE = 6;
     static final int WINNING_NUMBER = 12;
@@ -54,15 +67,13 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         // Print header
-        System.out.println("Welcome to dice game 12. "
-                + "You must roll 1-3 dice and try to get the sum of 12 ...");
+        System.out.println(WELCOME);
 
         // Loop until quit
         while (!gameIsQuit) {
 
             // print choices
-            System.out.print("Enter which dice you want to roll [1,2,3] "
-                    + "(exit with q):");
+            System.out.print(CHOICES);
             if (userInput.hasNextInt()) {
                 currentDiceInput = userInput.nextInt();
 
@@ -83,9 +94,7 @@ public class Main {
                                     dice1, dice2, dice3,
                                     totalAmount, totalWins, totalLosses);
                         } else {
-                            System.out.println("Sorry, "
-                                    + "you have already rolled that dice. "
-                                    + "Try again");
+                            System.out.println(ALREADY_ROLLED);
                         }
                         break;
                     case INPUT_VALUE2:
@@ -103,9 +112,7 @@ public class Main {
                                     dice1, dice2, dice3,
                                     totalAmount, totalWins, totalLosses);
                         } else {
-                            System.out.println("Sorry, "
-                                    + "you have already rolled that dice. "
-                                    + "Try again");
+                            System.out.println(ALREADY_ROLLED);
                         }
                         break;
                     case INPUT_VALUE3:
@@ -123,15 +130,11 @@ public class Main {
                                     dice1, dice2, dice3,
                                     totalAmount, totalWins, totalLosses);
                         } else {
-                            System.out.println("Sorry, "
-                                    + "you have already rolled that dice. "
-                                    + "Try again");
+                            System.out.println(ALREADY_ROLLED);
                         }
                         break;
                     default:
-                        System.out.println("Sorry, that is an invalid entry. "
-                                + "Try again. Valid entries are "
-                                + "1, 2, 3, and q");
+                        System.out.println(INVALID_ENTRY);
                         break;
                 }
 
@@ -142,15 +145,13 @@ public class Main {
                     // Print result
                     System.out.printf("#win: %d #loss: %d  %n",
                             totalWins, totalLosses);
-                    System.out.println("Game Over!");
+                    System.out.println(GAME_OVER);
                     gameIsQuit = true;
                 } else {
-                    System.out.println("Sorry, that is an invalid entry. "
-                            + "Try again. Valid entries are 1, 2, 3, and q");
+                    System.out.println(INVALID_ENTRY);
                 }
             } else {
-                System.out.println("Sorry, that is an invalid entry. "
-                        + "Try again. Valid entries are 1, 2, 3, and q");
+                System.out.println(INVALID_ENTRY);
             }
             if (isDice1thrown && isDice2thrown && isDice3thrown) {
 
@@ -165,16 +166,16 @@ public class Main {
                 // Add win or loss to result
                 if (totalAmount == WINNING_NUMBER) {
                     totalWins++;
-                    System.out.println("You won!!");
+                    System.out.println(WIN);
                 } else if (totalAmount > WINNING_NUMBER) {
                     totalLosses++;
-                    System.out.println("You lost!!");
+                    System.out.println(LOSS);
                 } else {
-                    System.out.println("You neither won nor lost the game.");
+                    System.out.println(DRAW);
                 }
                 // Reset score
                 totalAmount = 0;
-                System.out.println("Next round!");
+                System.out.println(NEXT_ROUND);
 
             }
 
